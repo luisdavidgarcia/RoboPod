@@ -1,0 +1,76 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+venv/
+env/
+ENV/
+.venv/
+
+# C++
+# Object files, build directories, and other generated files
+*.o
+*.obj
+*.out
+*.exe
+*.a
+*.so
+*.dll
+*.dylib
+*.lib
+*.la
+*.lo
+*.loT
+*.slo
+*.pdb
+*.idb
+*.dSYM/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+*.ninja
+*.deps/
+*.gcc/
+
+# ROS2 (ROS2-specific files)
+*.log
+*.bak
+*.swp
+*.orig
+*.rej
+*.d
+*.catkin_tools/
+build/
+devel/
+install/
+logs/
+
+# Podman / Docker
+# Ignore Podman container artifacts and images
+*.tar
+*.img
+*.iso
+podman/
+*.podman/
+podman-compose.yml
+.docker/
+
+# Operating System Specific
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Editors / IDEs
+# VS Code
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Other IDEs / Editors
+*.swp
+*~
