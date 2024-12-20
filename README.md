@@ -12,3 +12,18 @@ It basically ties down to the wonderful documentation form iRobot
 In the Github there are already docker images to run Create3 applications,
 but there always room to expand such as adding deep learning libraries and
 frameworks.
+
+To run and create the Docker image you need to run the following commands:
+
+```sh
+podman build -t icreate3-dev -f .devcontainer/Dockerfile .
+```
+
+```sh
+podman run -it --rm \
+    --network=host \
+    --env="DISPLAY=$DISPLAY" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    --volume=".:/root/create3_ws/src/my_project" \
+    icreate3-dev
+```
