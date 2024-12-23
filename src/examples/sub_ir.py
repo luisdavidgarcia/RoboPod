@@ -4,7 +4,6 @@ Subcriber Example
 '''
 
 import rclpy
-import sys
 
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
@@ -30,7 +29,7 @@ class IRSubscriber(Node):
         print('Printing IR sensor readings: ')
         for reading in msg.readings:
             val = reading.value
-            print('IR sensor: ' + str(val))
+            print(f'IR sensor: {val}')
 
     def listener_callback(self, msg:IrIntensityVector):
         print('Now listening to IR sensor readings it hears...')
@@ -47,7 +46,8 @@ def main(args=None):
     finally:
         print('Done')
         IR_subscriber.destroy_node()
-        rclpy.shutdown()
+        if rclpy.ok():
+            rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
