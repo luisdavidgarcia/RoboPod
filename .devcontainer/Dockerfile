@@ -190,7 +190,8 @@ This container includes PyTorch, OpenCV, and Stable-Baselines3 for robotics ML/D
 
 WORKDIR $HOME
 
-RUN echo ' \n\
+RUN echo '\n\
 export IGNITION_VERSION=fortress \n\
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp \n\
 source /opt/ros/humble/setup.bash \n\
 source /root/create3_ws/install/local_setup.bash' >> $HOME/.bashrc
