@@ -12,6 +12,7 @@ from irobot_create_msgs.msg import IrIntensityVector
 namespace = '/robocop'
 
 class IRSubscriber(Node):
+    
     def __init__(self):
         super().__init__('IR_subscriber')
         print('Creating subscription to the IrIntensityVector type over the /ir_intensity topic')
