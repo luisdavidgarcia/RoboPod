@@ -70,3 +70,71 @@ In your docker container please install Gazebo Harmonic with as instructed here:
 
 [Gazebo Haramonic Install](https://gazebosim.org/docs/harmonic/install_ubuntu/)
 
+## Examples Directory
+
+If you go to `src/examples` you will see four examples of getting with ROS2
+with the iCreate3, so the scripts entail:
+
+1. `sub_ir.py`: Lets us create a subscriber for infared topic
+2. `pub_lightring.py`: Lets us create a publish for lightring topic
+3. `actionclient_rotate.py`: Lets us us create an action client for rotating
+4. `audio_bump.py`: Lets us see how to create a ROS2 package
+
+
+However here is an example of how to create packages in ROS2:
+
+Assuming you installed ROS2 Humble and have your docker container running:
+
+Nex you will need to run to create the package:
+
+```sh
+source install/setup.bash
+cd src
+ros2 pkg create --build-type ament_python package_example
+```
+
+This is want created the package and it basically is configured for python, but
+next we must build again with the new package using:
+
+```sh
+cd ..
+colcon build --packages-select package_example
+. install/local_setup.bash
+```
+
+In all packages you create you can get access to a `package.xml` file that you
+can edit and incoprate basically details abotu the project like description,
+name, license, and author. You should repeat your changes for the `setup.py`
+script that was installed in that same location.
+
+In that same `setup.py` we can add a discovery script like here:
+
+```python
+entry_points=[
+    'console_scripts': ['pub_sub = package_example.audio_bump:main'],
+]
+```
+
+For any edits in your package you should always run:
+
+```sh
+colcon built --packages-select package_example
+. install/local_setup.bash
+```
+
+So you if you copy the `audio_bump.py` file you will need to rerun them. 
+Speaking of copying it try it then run those commands:
+
+```sh
+cd ~/create3_ws
+cp src/my_project/src/examples/audio_bump.py src/package_example/package_example
+colcon built --packages-select package_example
+. install/local_setup.bash
+```
+
+To run the scripts you edited in entry point just build as shown in the commands
+above this line. You can then run this package by doing:
+
+```sh
+ros2 run create3_package pub_sub
+```
